@@ -1,0 +1,561 @@
+.professional-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8); /* Dark semi-transparent */
+  backdrop-filter: blur(0px);
+  z-index: 1000;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid transparent;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  height: 100px;
+  box-sizing: border-box;
+}
+
+/* iOS-style liquid background only - EXACT SAME HEIGHT */
+.professional-header.scrolled {
+  background: rgba(0, 0, 0, 0.95); /* Darker when scrolled */
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Light border for contrast */
+  height: 100px;
+  padding: 1.5rem 0;
+}
+
+/* Content stays same size - only background changes */
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  width: 100%;
+  height: 100%;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  height: 100%;
+}
+
+/* Logo Link */
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+/* Logo Image Container - FIXED SIZE */
+.logo-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  background: rgba(30, 30, 30, 0.8); /* Dark background for logo container */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* NO SIZE CHANGE on scroll - only visual effects */
+.professional-header.scrolled .logo-image {
+  width: 70px;
+  height: 70px;
+  transform: scale(0.95);
+  background: rgba(40, 40, 40, 0.9); /* Slightly darker when scrolled */
+}
+
+/* Logo Image */
+.logo-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 10px rgba(8, 117, 38, 0.3)); /* Green glow effect */
+}
+
+/* Fallback text if image doesn't load */
+.logo-fallback {
+  display: none;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 1.2rem;
+  color: #087526; /* Green color for fallback */
+  font-weight: 600;
+}
+
+/* Logo Text Stack */
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+
+.logo-main {
+  font-family: 'Montserrat Alternates', serif;
+  font-size: 2.2rem;
+  background: linear-gradient(135deg, #ffffff 0%, #087526 100%); /* Gradient text */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.logo-sub {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 0.85rem;
+  color: #b0b0b0; /* Light gray for subtitle */
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 6px;
+  transition: all 0.3s ease;
+}
+
+/* NO SIZE CHANGE on scroll - only visual effects */
+.professional-header.scrolled .logo-text {
+  transform: scale(0.95);
+}
+
+.professional-header.scrolled .logo-main {
+  font-size: 2.2rem;
+}
+
+.professional-header.scrolled .logo-sub {
+  font-size: 0.85rem;
+}
+
+.logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #087526; /* Green color for icon */
+}
+
+/* Remove old logo h1 styles since we're using the new structure */
+.logo h1 {
+  display: none;
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-menu a {
+  font-family: 'Montserrat Alternates', sans-serif;
+  text-decoration: none;
+  color: #ffffff; /* White text for dark theme */
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+  white-space: nowrap;
+  padding: 0.5rem 0;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+  color: #087526; /* Green on hover/active */
+}
+
+.nav-menu a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #087526;
+  transform: scaleX(1);
+  transition: transform 0.3s ease;
+}
+
+.nav-menu a:not(.active)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #087526;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+  transform: scaleX(1);
+}
+
+/* Mobile Menu Button - Hidden on Desktop */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ffffff; /* White color for mobile button */
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  width: 44px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.1); /* Light background for button */
+  backdrop-filter: blur(10px);
+}
+
+.mobile-menu-btn:hover {
+  background: rgba(8, 117, 38, 0.3); /* Green hover effect */
+  color: #087526;
+}
+
+/* Mobile Navigation Menu - Hidden on Desktop */
+.mobile-nav-menu {
+  display: none;
+  position: fixed;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.98); /* Dark background for mobile menu */
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-nav-menu.open {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.mobile-nav {
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1.5rem;
+}
+
+.mobile-nav a {
+  font-size: 1.1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff; /* White text for mobile nav */
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav a:hover,
+.mobile-nav a.active {
+  color: #087526; /* Green on hover/active */
+}
+
+.mobile-nav a:last-child {
+  border-bottom: none;
+}
+
+/* Add this to your main CSS file or global styles */
+body {
+  padding-top: 100px !important;
+  background: #000000; /* Ensure body background is black */
+}
+
+/* Ensure no other styles interfere with header height */
+* {
+  box-sizing: border-box;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .header-container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0 1rem;
+  }
+
+  /* Hide desktop navigation on mobile */
+  .desktop-nav {
+    display: none;
+  }
+
+  /* Show mobile menu button */
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  /* Show mobile navigation when open */
+  .mobile-nav-menu {
+    display: block;
+  }
+
+  /* Adjust logo size for tablet - but keep consistent */
+  .logo-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .professional-header.scrolled .logo-image {
+    width: 60px;
+    height: 60px;
+    transform: scale(0.95);
+  }
+
+  .logo-main {
+    font-size: 1.9rem;
+  }
+
+  .logo-sub {
+    font-size: 0.8rem;
+    margin-top: 5px;
+    letter-spacing: 2px;
+  }
+
+  .professional-header.scrolled .logo-main {
+    font-size: 1.9rem;
+  }
+
+  .professional-header.scrolled .logo-sub {
+    font-size: 0.8rem;
+  }
+
+  .logo-icon {
+    transform: scale(0.9);
+  }
+
+  /* Update body padding for mobile */
+  body {
+    padding-top: 100px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .professional-header {
+    height: 90px;
+    padding: 1.2rem 0;
+  }
+
+  .professional-header.scrolled {
+    height: 90px;
+    padding: 1.2rem 0;
+  }
+
+  .header-container {
+    padding: 0 0.8rem;
+  }
+
+  /* Adjust logo size for mobile */
+  .logo-image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .professional-header.scrolled .logo-image {
+    width: 50px;
+    height: 50px;
+    transform: scale(0.95);
+  }
+
+  .logo-main {
+    font-size: 1.7rem;
+  }
+
+  .logo-sub {
+    font-size: 0.75rem;
+    margin-top: 4px;
+    letter-spacing: 1.5px;
+  }
+
+  .professional-header.scrolled .logo-main {
+    font-size: 1.7rem;
+  }
+
+  .professional-header.scrolled .logo-sub {
+    font-size: 0.75rem;
+  }
+
+  .logo-icon {
+    transform: scale(0.8);
+  }
+
+  .mobile-nav-menu {
+    top: 90px;
+  }
+
+  .mobile-nav {
+    padding: 1.8rem;
+    gap: 1.2rem;
+  }
+
+  .mobile-nav a {
+    font-size: 1.1rem;
+    padding: 0.8rem 0;
+  }
+
+  .logo-fallback {
+    font-size: 1.1rem;
+  }
+
+  /* Update body padding for mobile */
+  body {
+    padding-top: 90px !important;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 375px) {
+  .professional-header {
+    height: 85px;
+    padding: 1rem 0;
+  }
+
+  .professional-header.scrolled {
+    height: 85px;
+    padding: 1rem 0;
+  }
+
+  .header-container {
+    padding: 0 0.6rem;
+  }
+
+  .logo-image {
+    width: 45px;
+    height: 45px;
+  }
+
+  .professional-header.scrolled .logo-image {
+    width: 45px;
+    height: 45px;
+    transform: scale(0.95);
+  }
+
+  .logo-main {
+    font-size: 1.5rem;
+  }
+
+  .logo-sub {
+    font-size: 0.7rem;
+    margin-top: 3px;
+    letter-spacing: 1px;
+  }
+
+  .professional-header.scrolled .logo-main {
+    font-size: 1.5rem;
+  }
+
+  .professional-header.scrolled .logo-sub {
+    font-size: 0.7rem;
+  }
+
+  .mobile-nav-menu {
+    top: 85px;
+  }
+
+  .mobile-nav {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+
+  .mobile-nav a {
+    font-size: 1rem;
+    padding: 0.7rem 0;
+  }
+
+  .logo-fallback {
+    font-size: 1rem;
+  }
+
+  /* Update body padding for small mobile */
+  body {
+    padding-top: 85px !important;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 320px) {
+  .professional-header {
+    height: 80px;
+    padding: 0.8rem 0;
+  }
+
+  .professional-header.scrolled {
+    height: 80px;
+    padding: 0.8rem 0;
+  }
+
+  .header-container {
+    padding: 0 0.5rem;
+  }
+
+  .logo-image {
+    width: 40px;
+    height: 40px;
+  }
+
+  .professional-header.scrolled .logo-image {
+    width: 40px;
+    height: 40px;
+    transform: scale(0.95);
+  }
+
+  .logo-main {
+    font-size: 1.4rem;
+  }
+
+  .logo-sub {
+    font-size: 0.65rem;
+    margin-top: 2px;
+  }
+
+  .professional-header.scrolled .logo-main {
+    font-size: 1.4rem;
+  }
+
+  .professional-header.scrolled .logo-sub {
+    font-size: 0.65rem;
+  }
+
+  .mobile-nav-menu {
+    top: 80px;
+  }
+
+  .mobile-nav {
+    padding: 1.2rem;
+  }
+
+  .mobile-nav a {
+    font-size: 0.95rem;
+  }
+
+  .logo-fallback {
+    font-size: 0.95rem;
+  }
+
+  /* Update body padding for extra small mobile */
+  body {
+    padding-top: 80px !important;
+  }
+}

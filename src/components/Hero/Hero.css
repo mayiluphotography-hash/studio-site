@@ -1,0 +1,557 @@
+.hero-section {
+  height: 100vh;
+  min-height: 600px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 0 1rem;
+  overflow: hidden;
+}
+
+/* Video Background Container */
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Background Video - Multiple Videos */
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+}
+
+.background-video.active {
+  opacity: 1;
+}
+
+.background-video.transitioning {
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Loading State */
+.video-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 3;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid #087526;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+.video-loading p {
+  color: white;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Video Progress Indicator */
+.video-progress {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 4;
+}
+
+.progress-bar {
+  width: 80px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.progress-bar:hover:not(.disabled) {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.progress-bar.active:not(.disabled) {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.progress-bar.disabled {
+  background: rgba(255, 255, 255, 0.1);
+  cursor: not-allowed;
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  background: #087526;
+  border-radius: 2px;
+  transition: width 15s linear;
+}
+
+.progress-bar.active .progress-fill {
+  width: 100%;
+  animation: progressFill 15s linear forwards;
+}
+
+.progress-bar.completed .progress-fill {
+  width: 100%;
+  background: #087526;
+}
+
+.progress-bar.disabled .progress-fill {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes progressFill {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+/* Video Progress Indicator */
+.video-progress {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 4;
+}
+
+.progress-bar {
+  width: 80px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.progress-bar:hover:not(.disabled) {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.progress-bar.active:not(.disabled) {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.progress-bar.disabled {
+  background: rgba(255, 255, 255, 0.1);
+  cursor: not-allowed;
+}
+
+.progress-bar.completed {
+  background: rgba(231, 76, 60, 0.3);
+}
+
+.progress-bar.completed .progress-fill {
+  background: #087526;
+  width: 100% !important;
+  animation: none !important;
+}
+
+.progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: #087526;
+  border-radius: 2px;
+  transform-origin: left center;
+}
+
+/* Only animate the active progress bar */
+.progress-bar.active:not(.disabled) .progress-fill {
+  animation: progressFill 15s linear forwards;
+}
+
+/* Reset animation for non-active bars */
+.progress-bar:not(.active) .progress-fill {
+  animation: none;
+  width: 0%;
+}
+
+/* For completed bars (previous videos) */
+.progress-bar.completed .progress-fill {
+  width: 100%;
+  animation: none;
+}
+
+@keyframes progressFill {
+  0% { 
+    transform: scaleX(0);
+    width: 0%;
+  }
+  100% { 
+    transform: scaleX(1);
+    width: 100%;
+  }
+}
+
+/* Video Navigation Dots */
+.video-dots {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 4;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.dot:hover:not(.disabled) {
+  border-color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.2);
+}
+
+.dot.active:not(.disabled) {
+  background: #087526;
+  border-color: #087526;
+  transform: scale(1.2);
+}
+
+.dot.completed {
+  background: #087526;
+  border-color: #087526;
+}
+
+.dot.disabled {
+  border-color: rgba(255, 255, 255, 0.2);
+  cursor: not-allowed;
+}
+
+/* Fallback background image */
+.fallback-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+              url('/images/hero-bg.jpg') center/cover; */
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+
+/* Video overlay for better text readability */
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.2) 50%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  z-index: 2;
+}
+
+.hero-content {
+  max-width: 800px;
+  width: 100%;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 3;
+}
+
+/* Rest of your existing styles remain the same */
+.hero-text h2 {
+  font-family: 'Montserrat Alternates', serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-text h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  line-height: 1.1;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.hero-text p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 0.8rem 1.5rem;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 140px;
+  backdrop-filter: blur(10px);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.btn-primary:hover {
+  background: white;
+  color: black;
+  text-shadow: none;
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  background: white;
+  color: black;
+  text-shadow: none;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 3;
+}
+
+.scroll-indicator span {
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  display: block;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.arrow {
+  width: 1px;
+  height: 20px;
+  background: white;
+  margin: 0 auto;
+  position: relative;
+}
+
+.arrow::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+  transform: rotate(45deg);
+}
+
+/* Video Loading States */
+/* .video-loading {
+  position: relative;
+}
+
+.video-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+} */
+
+/* Tablet */
+@media (min-width: 768px) {
+  .hero-text h2 {
+    font-size: 2rem;
+    letter-spacing: 3px;
+  }
+  
+  .hero-text h1 {
+    font-size: 3rem;
+    letter-spacing: 5px;
+  }
+  
+  .hero-text p {
+    font-size: 1.1rem;
+  }
+  
+  .btn-primary, .btn-secondary {
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .hero-text h2 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-text h1 {
+    font-size: 4rem;
+    letter-spacing: 8px;
+  }
+  
+  .hero-text p {
+    font-size: 1.2rem;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .hero-section {
+    min-height: 500px;
+    padding: 0 0.5rem;
+  }
+  
+  .hero-content {
+    padding: 0 0.5rem;
+  }
+  
+  .hero-text h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .hero-text h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+  }
+  
+  .hero-text p {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-buttons {
+    gap: 0.5rem;
+  }
+  
+  .btn-primary, .btn-secondary {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.75rem;
+    min-width: 120px;
+  }
+  
+  .scroll-indicator {
+    bottom: 0.5rem;
+  }
+}
+
+/* Landscape mode on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero-section {
+    height: auto;
+    min-height: 100vh;
+    padding: 4rem 1rem;
+  }
+  
+  .hero-text h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-text p {
+    margin-bottom: 1rem;
+  }
+  
+  .video-background {
+    height: 100vh;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .background-video {
+    display: none;
+  }
+  
+  .fallback-background {
+    opacity: 1 !important;
+  }
+}
+
+/* Mobile data saving - auto pause video on slow connections */
+@media (prefers-reduced-data: reduce) {
+  .background-video {
+    display: none;
+  }
+  
+  .fallback-background {
+    opacity: 1 !important;
+  }
+}

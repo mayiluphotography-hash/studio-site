@@ -1,0 +1,472 @@
+.process-section {
+    padding: 6rem 0;
+    background: transparent;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Hero Section */
+.process-hero {
+    text-align: center;
+    margin-bottom: 6rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.process-section.visible .process-hero {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.process-hero h1 {
+    font-family: 'Montserrat Alternates', serif;
+    font-size: 3.5rem;
+    background: linear-gradient(135deg, #ffffff 0%, #087526 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: #b0b0b0;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Process Timeline */
+.process-timeline {
+    position: relative;
+    margin-bottom: 6rem;
+}
+
+.process-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #087526, transparent);
+    transform: translateX(-50%);
+}
+
+.process-step {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.process-section.visible .process-step {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.process-step.left {
+    flex-direction: row;
+}
+
+.process-step.right {
+    flex-direction: row-reverse;
+}
+
+.step-content {
+    flex: 1;
+    padding: 2.5rem;
+    background: rgba(30, 30, 30, 0.8);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    margin: 0 2rem;
+    position: relative;
+}
+
+.step-content::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background: #087526;
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+.process-step.left .step-content::before {
+    right: -40px;
+}
+
+.process-step.right .step-content::before {
+    left: -40px;
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.step-number {
+    font-family: 'Montserrat Alternates', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #087526;
+}
+
+.step-icon {
+    font-size: 2rem;
+}
+
+.step-content h3 {
+    font-family: 'Montserrat Alternates', serif;
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.step-description {
+    color: #b0b0b0;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.step-details {
+    margin-bottom: 1.5rem;
+}
+
+.step-details h4 {
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.step-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.step-details li {
+    color: #b0b0b0;
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.5;
+}
+
+.step-details li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #087526;
+    font-weight: bold;
+}
+
+.step-timeline {
+    color: #087526;
+    font-weight: 600;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.step-image {
+    flex: 1;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+}
+
+.step-image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.image-placeholder {
+    display: none;
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(135deg, #087526, #0a8a2d);
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Montserrat Alternates', serif;
+    font-weight: 600;
+}
+
+/* FAQ Section */
+.process-faq {
+    margin-bottom: 6rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease 0.4s;
+}
+
+.process-section.visible .process-faq {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.process-faq h2 {
+    font-family: 'Montserrat Alternates', serif;
+    font-size: 2.5rem;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.faq-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.faq-item {
+    background: rgba(30, 30, 30, 0.8);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: rgba(8, 117, 38, 0.3);
+}
+
+.faq-question {
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.faq-question h4 {
+    font-family: 'Montserrat Alternates', serif;
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin: 0;
+    flex: 1;
+}
+
+.faq-icon {
+    color: #087526;
+    font-size: 1.5rem;
+    font-weight: 300;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    padding: 0 2rem 1.5rem;
+    color: #b0b0b0;
+    line-height: 1.6;
+    display: none;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+/* CTA Section */
+.process-cta {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: rgba(30, 30, 30, 0.8);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease 0.6s;
+}
+
+.process-section.visible .process-cta {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cta-content h2 {
+    font-family: 'Montserrat Alternates', serif;
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.cta-content p {
+    color: #b0b0b0;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.cta-features {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #b0b0b0;
+    font-size: 0.9rem;
+}
+
+.feature-icon {
+    font-size: 1.1rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #087526, #002c0d);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(8, 115, 38, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #087526;
+    border: 2px solid #087526;
+}
+
+.btn-secondary:hover {
+    background: #087526;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .process-timeline::before {
+        left: 30px;
+    }
+
+    .process-step {
+        flex-direction: column !important;
+        align-items: flex-start;
+        margin-left: 60px;
+    }
+
+    .step-content::before {
+        left: -50px !important;
+        right: auto !important;
+    }
+
+    .step-image {
+        margin-top: 2rem;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .process-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .process-step {
+        margin-left: 40px;
+    }
+
+    .step-content {
+        padding: 2rem;
+        margin: 0;
+    }
+
+    .step-content::before {
+        left: -40px !important;
+        width: 15px;
+        height: 15px;
+    }
+
+    .faq-question {
+        padding: 1.5rem;
+    }
+
+    .faq-answer {
+        padding: 0 1.5rem 1.5rem;
+    }
+
+    .cta-features {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .process-section {
+        padding: 4rem 0;
+    }
+
+    .process-hero h1 {
+        font-size: 2rem;
+    }
+
+    .process-faq h2,
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+
+    .step-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .faq-question h4 {
+        font-size: 1.1rem;
+    }
+}
