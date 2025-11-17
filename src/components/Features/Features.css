@@ -207,7 +207,8 @@
   }
 
   .feature-card {
-    padding: 2rem 1.5rem;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 

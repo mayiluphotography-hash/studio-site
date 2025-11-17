@@ -222,6 +222,7 @@
   flex-shrink: 0;
   background: rgba(255, 255, 255, 0.1); /* Light background for button */
   backdrop-filter: blur(10px);
+  z-index: 1002;
 }
 
 .mobile-menu-btn:hover {
@@ -229,25 +230,27 @@
   color: #087526;
 }
 
-/* Mobile Navigation Menu - Hidden on Desktop */
+/* Mobile Navigation Menu - Fixed Version */
 .mobile-nav-menu {
-  display: none;
   position: fixed;
   top: 100px;
   left: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.98); /* Dark background for mobile menu */
+  background: rgba(0, 0, 0, 0.98);
   backdrop-filter: blur(20px);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   transform: translateY(-100%);
   opacity: 0;
+  visibility: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1001;
 }
 
 .mobile-nav-menu.open {
   transform: translateY(0);
   opacity: 1;
+  visibility: visible;
 }
 
 .mobile-nav {
@@ -260,14 +263,17 @@
   font-size: 1.1rem;
   padding: 0.8rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  color: #ffffff; /* White text for mobile nav */
+  color: #ffffff;
   text-decoration: none;
   transition: all 0.3s ease;
+  display: block;
+  width: 100%;
 }
 
 .mobile-nav a:hover,
 .mobile-nav a.active {
-  color: #087526; /* Green on hover/active */
+  color: #087526;
+  transform: translateX(10px);
 }
 
 .mobile-nav a:last-child {
@@ -277,7 +283,7 @@
 /* Add this to your main CSS file or global styles */
 body {
   padding-top: 100px !important;
-  background: #000000; /* Ensure body background is black */
+  background: #000000;
 }
 
 /* Ensure no other styles interfere with header height */
@@ -307,7 +313,7 @@ body {
     display: flex;
   }
 
-  /* Show mobile navigation when open */
+  /* Mobile navigation menu is always in DOM, controlled by visibility */
   .mobile-nav-menu {
     display: block;
   }

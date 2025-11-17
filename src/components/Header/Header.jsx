@@ -50,16 +50,27 @@ const Header = ({ activeSection, setActiveSection }) => {
     setIsMobileMenuOpen(false);
   };
 
-  // Close mobile menu when clicking outside
+  const handleMobileMenuToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  // Close mobile menu when clicking outside - FIXED VERSION
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (isMobileMenuOpen && !event.target.closest('.nav-menu') && !event.target.closest('.mobile-menu-btn')) {
+      const mobileMenu = document.querySelector('.mobile-nav-menu');
+      const mobileButton = document.querySelector('.mobile-menu-btn');
+      
+      if (isMobileMenuOpen && 
+          mobileMenu && 
+          !mobileMenu.contains(event.target) && 
+          mobileButton && 
+          !mobileButton.contains(event.target)) {
         setIsMobileMenuOpen(false);
       }
     };
 
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isMobileMenuOpen]);
 
   return (
@@ -134,7 +145,7 @@ const Header = ({ activeSection, setActiveSection }) => {
         {/* Mobile Menu Button */}
         <button
           className="mobile-menu-btn"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          onClick={handleMobileMenuToggle}
           aria-label="Toggle mobile menu"
         >
           {isMobileMenuOpen ? (

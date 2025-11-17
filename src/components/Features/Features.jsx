@@ -56,7 +56,7 @@ const Features = () => {
 
   // Start auto-rotation
   const startAutoRotation = () => {
-    stopAutoRotation(); // Clear any existing interval first
+    stopAutoRotation();
     intervalRef.current = setInterval(() => {
       setActiveFeature((prev) => (prev + 1) % features.length);
     }, 4000);
@@ -70,8 +70,16 @@ const Features = () => {
     }
   };
 
-  // Intersection Observer for section visibility
+  // FIXED: Visibility handling (mobile + desktop)
   useEffect(() => {
+    // 🔥 ALWAYS VISIBLE on mobile screens
+    if (window.innerWidth < 768) {
+      setIsVisible(true);
+      startAutoRotation();
+      return;
+    }
+
+    // Desktop: Use IntersectionObserver
     const observer = new IntersectionObserver(
       ([entry]) => {
         const isIntersecting = entry.isIntersecting;
@@ -79,49 +87,46 @@ const Features = () => {
 
         if (isIntersecting && !isVisible) {
           setIsVisible(true);
-          startAutoRotation(); // Start animation when section comes into view
+          startAutoRotation();
         } else if (!isIntersecting) {
-          stopAutoRotation(); // Stop animation when section leaves view
+          stopAutoRotation();
         }
       },
       {
-        threshold: 0.3,
-        rootMargin: '50px' // Adds a little buffer zone
+        threshold: 0.1,
+        rootMargin: '0px 0px -10% 0px'
       }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+    if (sectionRef.current) observer.observe(sectionRef.current);
 
     return () => {
       observer.disconnect();
-      stopAutoRotation(); // Cleanup on unmount
+      stopAutoRotation();
     };
   }, [isVisible, features.length]);
 
-  // Handle manual hover - pause auto rotation on hover
+  // Pause rotation on hover
   const handleMouseEnter = (index) => {
     setActiveFeature(index);
-    stopAutoRotation(); // Pause auto-rotation when user hovers
+    stopAutoRotation();
   };
 
   const handleMouseLeave = () => {
-    if (isSectionInView) {
-      startAutoRotation(); // Resume auto-rotation when user stops hovering (only if section is in view)
+    if (isSectionInView || window.innerWidth < 768) {
+      startAutoRotation();
     }
   };
 
   return (
     <section ref={sectionRef} className={`features-section ${isVisible ? 'visible' : ''}`}>
       <div className="container">
-        {/* Section Header */}
+
         <div className="features-header">
           <h2>Why Choose Mayilu Photography?</h2>
           <p>Professional photography services tailored to capture your most precious moments</p>
         </div>
 
-        {/* Features Grid */}
         <div className="features-grid">
           {features.map((feature, index) => (
             <div
@@ -136,17 +141,18 @@ const Features = () => {
               </div>
               <h3>{feature.title}</h3>
               <p>{feature.description}</p>
+
               <ul className="feature-highlights">
                 {feature.highlights.map((highlight, idx) => (
                   <li key={idx}>{highlight}</li>
                 ))}
               </ul>
+
               <div className="feature-indicator"></div>
             </div>
           ))}
         </div>
 
-        {/* Stats Component */}
         <Stats />
       </div>
     </section>

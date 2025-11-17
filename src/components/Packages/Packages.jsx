@@ -160,13 +160,19 @@ const Packages = () => {
     ];
 
     useEffect(() => {
+        // Always visible for mobile to avoid lazyload/observer issues
+        if (window.innerWidth < 900) {
+            setIsVisible(true);
+            return;
+        }
+
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
                     setIsVisible(true);
                 }
             },
-            { threshold: 0.1 }
+            { threshold: 0.02, rootMargin: "200px" }
         );
 
         if (sectionRef.current) {
@@ -175,6 +181,7 @@ const Packages = () => {
 
         return () => observer.disconnect();
     }, []);
+
 
     const handleContactClick = () => {
         navigate('/contact');
