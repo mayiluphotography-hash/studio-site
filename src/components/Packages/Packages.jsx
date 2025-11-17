@@ -160,7 +160,10 @@ const Packages = () => {
     ];
 
     useEffect(() => {
-        // Always visible for mobile to avoid lazyload/observer issues
+        // Prevent SSR crashes
+        if (typeof window === "undefined") return;
+
+        // Auto-visible on mobile
         if (window.innerWidth < 900) {
             setIsVisible(true);
             return;
@@ -175,12 +178,11 @@ const Packages = () => {
             { threshold: 0.02, rootMargin: "200px" }
         );
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
+        if (sectionRef.current) observer.observe(sectionRef.current);
 
         return () => observer.disconnect();
     }, []);
+
 
 
     const handleContactClick = () => {
