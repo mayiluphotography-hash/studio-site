@@ -248,15 +248,15 @@ const Memories = () => {
         {/* Stats */}
         <div className="memories-stats" ref={statsRef}>
           <div className="stat-item">
-            <span className="stat-number" data-target="1500">0</span>
+            <span className="stat-number" data-target="1500">500</span>
             <span className="stat-label">Happy Clients</span>
           </div>
           <div className="stat-item">
-            <span className="stat-number" data-target="2000">0</span>
+            <span className="stat-number" data-target="2000">500</span>
             <span className="stat-label">Memories Captured</span>
           </div>
           <div className="stat-item">
-            <span className="stat-number" data-target="350">0</span>
+            <span className="stat-number" data-target="350">500</span>
             <span className="stat-label">Events Covered</span>
           </div>
         </div>

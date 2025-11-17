@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Packages.css';
 import { useScrollToTop } from '../hooks/useScrollToTop';
 
 const Packages = () => {
     useScrollToTop();
-    const [isVisible, setIsVisible] = useState(false);
-    const sectionRef = useRef(null);
     const navigate = useNavigate();
 
     const packages = [
@@ -159,23 +157,6 @@ const Packages = () => {
         }
     ];
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                }
-            },
-            { threshold: 0.1 }
-        );
-
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
-
-        return () => observer.disconnect();
-    }, []);
-
     const handleContactClick = () => {
         navigate('/contact');
     };
@@ -194,7 +175,7 @@ const Packages = () => {
     };
 
     return (
-        <section ref={sectionRef} className={`packages-section ${isVisible ? 'visible' : ''}`} id="packages">
+        <section className="packages-section visible" id="packages">
             <div className="container">
                 {/* Section Header */}
                 <div className="packages-header">
