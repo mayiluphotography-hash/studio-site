@@ -87,7 +87,6 @@ function AppContent() {
           <Route path="/about" element={<About />} />
           <Route path="/process" element={<Process />} />
           <Route path="/faq" element={<FAQ />} />
-          {/* Fallback to home for unknown routes */}
           <Route path="*" element={<Home setActiveSection={setActiveSection} />} />
         </Routes>
       </main>
