@@ -123,7 +123,7 @@ const Footer = () => {
                             </div>
                             <div className="contact-item">
                                 <FaMapMarkerAlt size={14} />
-                                <span>Balaji complex, Near taluk office, Nambiyur, Tamilnadu - 638458</span>
+                                <span>Balaji complex, Near taluk office, Nambiyur - 638458</span>
                             </div>
                         </div>
                     </div>

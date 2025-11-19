@@ -297,3 +297,20 @@
     gap: 0.5rem;
   }
 }
+
+@media (max-width: 768px) {
+  /* Target only the address item (the last contact-item) */
+  .contact-item:last-child {
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .contact-item:last-child span {
+    text-align: center;
+    max-width: 250px;
+    margin: 0 auto;
+    line-height: 1.4;
+  }
+}

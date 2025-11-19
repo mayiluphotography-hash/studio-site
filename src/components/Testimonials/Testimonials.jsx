@@ -15,7 +15,7 @@ const Testimonials = () => {
             event: "Wedding Photography",
             text: "Mayilu captured our wedding's true emotions - every photo tells our love story perfectly!",
             rating: 5,
-            image: "/images/testimonials/1.jpg",
+            image: "/images/testimonials/1.JPG",
             coupleNames: "Priya & Raj"
         },
         {
@@ -24,7 +24,7 @@ const Testimonials = () => {
             event: "Family Portrait",
             text: "Our family's real personality shines through in every photo - natural, joyful, and priceless memories!",
             rating: 5,
-            image: "/images/testimonials/2.jpg",
+            image: "/images/testimonials/2.JPG",
             coupleNames: "Arun Family"
         },
         {
@@ -51,7 +51,7 @@ const Testimonials = () => {
             event: "Anniversary Shoot",
             text: "Turned our simple evening walk into magical photos that look like romantic movie stills!",
             rating: 5,
-            image: "/images/testimonials/5.jpg",
+            image: "/images/testimonials/5.JPG",
             coupleNames: "Divya & Sanjay"
         },
         {
@@ -187,10 +187,10 @@ const Testimonials = () => {
                                             <p className="testimonials-text">
                                                 {testimonial.text.length > 70 ? `${testimonial.text.substring(0, 70)}...` : testimonial.text}
                                             </p>
-                                            <div className="testimonials-client-info">
+                                            {/* <div className="testimonials-client-info">
                                                 <h4 className="testimonials-client-name">{testimonial.coupleNames}</h4>
                                                 <span className="testimonials-event-type">{testimonial.event}</span>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 </div>
