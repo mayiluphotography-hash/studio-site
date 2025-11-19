@@ -412,6 +412,114 @@
     }
 }
 
+/* Mobile Responsive Design for below 600px */
+@media (max-width: 600px) {
+    .feed-header {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 0 1rem 1.5rem;
+        text-align: center;
+    }
+
+    .back-btn {
+        order: 1;
+        width: 100%;
+        max-width: 200px;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    .client-info {
+        order: 2;
+        padding: 0;
+        width: 100%;
+    }
+
+    .client-info h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .client-details {
+        flex-direction: column;
+        gap: 0.3rem;
+        font-size: 0.9rem;
+    }
+
+    .client-details span:nth-child(2),
+    .client-details span:nth-child(4) {
+        display: none;
+        /* Hide the bullet points */
+    }
+
+    .image-count {
+        order: 3;
+        text-align: center;
+        width: 100%;
+        min-width: auto;
+        font-size: 1rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Feed Grid adjustments for mobile */
+    .feed-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 0.6rem;
+        padding: 0 1rem;
+    }
+
+    .feed-item {
+        border-radius: 10px;
+    }
+
+    .feed-item:hover {
+        transform: translateY(-3px) scale(1.01);
+    }
+
+    /* Reduce hover effects for mobile performance */
+    .feed-item:hover img {
+        transform: scale(1.08);
+    }
+
+    /* Testimonial adjustments */
+    .feed-testimonial {
+        padding: 2rem 1rem;
+        margin: 0 1rem 1.5rem;
+    }
+
+    .feed-testimonial p {
+        font-size: 1rem;
+    }
+
+    .quote-icon {
+        font-size: 3rem;
+        left: 10px;
+        top: -5px;
+    }
+}
+
+/* Extra small devices (below 400px) */
+@media (max-width: 400px) {
+    .feed-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 0.5rem;
+    }
+
+    .client-info h1 {
+        font-size: 1.6rem;
+    }
+
+    .client-details {
+        font-size: 0.85rem;
+    }
+
+    .back-btn {
+        font-size: 0.9rem;
+        padding: 0.7rem 1.2rem;
+    }
+}
+
 @media (max-width: 480px) {
     .feed-grid {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));

@@ -5,9 +5,7 @@ import './Memories.css';
 const Memories = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeMemory, setActiveMemory] = useState(0);
-  const [statsAnimated, setStatsAnimated] = useState(false);
   const sectionRef = useRef(null);
-  const statsRef = useRef(null);
   const navigate = useNavigate();
 
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
@@ -49,18 +47,6 @@ const Memories = () => {
       stats: "1000+ Portrait Sessions",
       color: "#6A5ACD",
     },
-    {
-      id: 4,
-      title: "Epic Beginnings",
-      subtitle: "Grand Celebrations",
-      image:
-        "https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=2070&q=80",
-      description:
-        "Where grand visions meet flawless execution. Capturing the scale and intimacy of your most significant events with cinematic precision and emotional depth.",
-      highlights: ["Cinematic Coverage", "Multiple Photographers", "Drone Photography", "Premium Albums"],
-      stats: "200+ Grand Events",
-      color: "#B8860B",
-    },
   ];
 
   /* -------------------------------------------------------
@@ -86,30 +72,6 @@ const Memories = () => {
     return () => observer.disconnect();
   }, [isMobile]);
 
-  /* -------------------------------------------------------
-      STATS VISIBILITY
-  ------------------------------------------------------- */
-  useEffect(() => {
-    if (isMobile) {
-      setStatsAnimated(true);
-      return;
-    }
-
-    const statsObserver = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !statsAnimated) {
-          setStatsAnimated(true);
-          animateStats();
-        }
-      },
-      { threshold: 0.4 }
-    );
-
-    if (statsRef.current) statsObserver.observe(statsRef.current);
-
-    return () => statsObserver.disconnect();
-  }, [statsAnimated, isMobile]);
-
   /* AUTO ROTATE */
   useEffect(() => {
     const interval = setInterval(() => {
@@ -117,26 +79,6 @@ const Memories = () => {
     }, 5000);
     return () => clearInterval(interval);
   }, [memories.length]);
-
-  /* STATS ANIMATION */
-  const animateStats = () => {
-    const statNumbers = document.querySelectorAll(".stat-number");
-    statNumbers.forEach((statNumber) => {
-      const target = parseInt(statNumber.getAttribute("data-target"));
-      const duration = 2000;
-      const step = target / (duration / 16);
-      let current = 0;
-
-      const timer = setInterval(() => {
-        current += step;
-        if (current >= target) {
-          current = target;
-          clearInterval(timer);
-        }
-        statNumber.textContent = Math.floor(current).toLocaleString();
-      }, 16);
-    });
-  };
 
   const handleExploreClick = (type) => {
     window.scrollTo(0, 0);
@@ -146,6 +88,11 @@ const Memories = () => {
   const handleBookSession = () => {
     window.scrollTo(0, 0);
     navigate("/contact");
+  };
+
+  const handleGallery = () => {
+    window.scrollTo(0, 0);
+    navigate("/memories");
   };
 
   return (
@@ -179,9 +126,8 @@ const Memories = () => {
           {memories.map((memory, index) => (
             <div
               key={memory.id}
-              className={`memory-card ${
-                activeMemory === index ? "active" : ""
-              } ${isVisible ? "animate-in" : ""}`}
+              className={`memory-card ${activeMemory === index ? "active" : ""
+                } ${isVisible ? "animate-in" : ""}`}
               style={{ "--accent-color": memory.color }}
               onMouseEnter={() => setActiveMemory(index)}
             >
@@ -214,7 +160,10 @@ const Memories = () => {
                 </div>
 
                 <div className="memory-actions">
-                  <button className="btn-explore" onClick={() => handleExploreClick(memory.title)}>
+                  <button className="btn-explore"
+                    // onClick={() => handleExploreClick(memory.title)}
+                    onClick={() => handleGallery()}
+                  >
                     <span>Explore Gallery</span>
                     <svg width="20" height="20" viewBox="0 0 24 24">
                       <path
@@ -242,22 +191,6 @@ const Memories = () => {
             <button className="btn-cta-primary" onClick={handleBookSession}>
               Start Your Journey
             </button>
-          </div>
-        </div>
-
-        {/* Stats */}
-        <div className="memories-stats" ref={statsRef}>
-          <div className="stat-item">
-            <span className="stat-number" data-target="1500">500</span>
-            <span className="stat-label">Happy Clients</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-number" data-target="2000">500</span>
-            <span className="stat-label">Memories Captured</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-number" data-target="350">500</span>
-            <span className="stat-label">Events Covered</span>
           </div>
         </div>
       </div>

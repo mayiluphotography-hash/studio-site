@@ -10,7 +10,7 @@ const ClientsGallery = () => {
     const [selectedImageIndex, setSelectedImageIndex] = useState(null);
     const [viewMode, setViewMode] = useState('grid'); // 'grid', 'feed', 'popup'
 
-    // Sample client data - replace with your actual clients
+
     const clients = [
         {
             id: 1,
@@ -41,82 +41,123 @@ const ClientsGallery = () => {
                 "/images/gal-diwakar-prakathi/19.jpg",
                 "/images/gal-diwakar-prakathi/20.jpg",
             ],
-            testimonial: "Absolutely stunning photos that captured every special moment of our wedding day!"
+            testimonial: "Mayilu captured every emotion of our wedding so beautifully. The photos tell our complete love story!"
         },
         {
             id: 2,
-            name: "Rahul Family",
-            category: "Family Portrait",
-            location: "Chennai",
-            date: "2024",
-            coverImage: "/api/placeholder/400/300",
+            name: "Saravanan & Sangavi",
+            category: "Outdoor",
+            location: "Kochi",
+            date: "2022",
+            coverImage: "/images/sarav-candit/1.jpg",
             images: [
-                "/api/placeholder/800/600",
-                "/api/placeholder/800/600",
-                "/api/placeholder/800/600",
-                "/api/placeholder/800/600"
+                "/images/sarav-candit/1.jpg",
+                "/images/sarav-candit/2.jpg",
+                "/images/sarav-candit/3.jpg",
+                "/images/sarav-candit/4.jpg",
+                "/images/sarav-candit/5.jpg",
+                "/images/sarav-candit/6.jpg",
+                "/images/sarav-candit/7.jpg",
             ],
-            testimonial: "The family photos turned out better than we could have ever imagined!"
+            testimonial: "Our outdoor photoshoot in Kochi was amazing! Mayilu made us feel so comfortable and the natural lighting photos are stunning."
         },
         {
             id: 3,
-            name: "Sneha Maternity",
-            category: "Maternity",
-            location: "Bangalore",
-            date: "2023",
-            coverImage: "/api/placeholder/400/300",
+            name: "Vignesh & Dhivya",
+            category: "Reception",
+            location: "Avinashi",
+            date: "2019",
+            coverImage: "/images/vignesh/1.jpg",
             images: [
-                "/api/placeholder/800/600",
-                "/api/placeholder/800/600",
-                "/api/placeholder/800/600",
-                "/api/placeholder/800/600",
-                "/api/placeholder/800/600"
+                "/images/vignesh/1.jpg",
+                "/images/vignesh/2.jpg",
+                "/images/vignesh/3.jpg",
+                "/images/vignesh/4.jpg",
+                "/images/vignesh/5.jpg",
+                "/images/vignesh/6.jpg",
+                "/images/vignesh/7.jpg",
             ],
-            testimonial: "Such beautiful and emotional photos that we'll cherish forever."
+            testimonial: "The reception photos perfectly captured the joy and celebration of our special night in Avinashi!"
         },
         {
             id: 4,
-            name: "Karthik Corporate",
-            category: "Corporate",
-            location: "Hyderabad",
-            date: "2023",
-            coverImage: "/api/placeholder/400/300",
+            name: "Pradeep & Naveena",
+            category: "Outdoor",
+            location: "Ooty",
+            date: "2022",
+            coverImage: "/images/pradeep/1.jpg",
             images: [
-                "/api/placeholder/800/600",
-                "/api/placeholder/800/600",
-                "/api/placeholder/800/600"
+                "/images/pradeep/1.jpg",
+                "/images/pradeep/2.jpg",
+                "/images/pradeep/3.jpg",
+                "/images/pradeep/4.jpg",
             ],
-            testimonial: "Professional and creative corporate photos that perfectly represent our brand."
+            testimonial: "Our Ooty photoshoot was magical! Mayilu found the most beautiful locations and made us look like we're in a fairytale."
         },
         {
             id: 5,
-            name: "Meera & Sriram",
-            category: "Engagement",
-            location: "Madurai",
-            date: "2024",
-            coverImage: "/api/placeholder/400/300",
+            name: "Hari & Sumitha",
+            category: "Wedding",
+            location: "Salem",
+            date: "2025",
+            coverImage: "/images/hari/1.JPG",
             images: [
-                "/api/placeholder/800/600",
-                "/api/placeholder/800/600",
-                "/api/placeholder/800/600",
-                "/api/placeholder/800/600",
-                "/api/placeholder/800/600"
+                "/images/hari/1.JPG",
+                "/images/hari/2.JPG",
+                "/images/hari/3.JPG",
+                "/images/hari/4.JPG",
+                "/images/hari/5.JPG",
+                "/images/hari/6.JPG",
+                "/images/hari/7.JPG",
+                "/images/hari/8.JPG",
+                "/images/hari/9.JPG",
+                "/images/hari/10.JPG",
+                "/images/hari/11.JPG",
+                "/images/hari/12.JPG",
             ],
-            testimonial: "The engagement shoot was so much fun and the photos are magical!"
+            testimonial: "From the temple ceremonies to the reception, every moment was captured with such artistry and emotion."
         },
         {
             id: 6,
-            name: "Baby Krishna",
-            category: "Newborn",
-            location: "Trichy",
-            date: "2023",
-            coverImage: "/api/placeholder/400/300",
+            name: "Jeedhan & Harini",
+            category: "Wedding",
+            location: "Coimbatore",
+            date: "2024",
+            coverImage: "/images/dr/4.jpg",
             images: [
-                "/api/placeholder/800/600",
-                "/api/placeholder/800/600",
-                "/api/placeholder/800/600"
+                "/images/dr/1.jpg",
+                "/images/dr/2.jpg",
+                "/images/dr/3.jpg",
+                "/images/dr/4.jpg",
+                "/images/dr/5.jpg",
+                "/images/dr/6.jpg",
+                "/images/dr/7.jpg",
+                "/images/dr/8.jpg",
+                "/images/dr/9.jpg",
+                "/images/dr/10.jpg",
+                "/images/dr/11.jpg",
+                "/images/dr/12.jpg",
+                "/images/dr/13.jpg",
+                "/images/dr/14.jpg",
+                "/images/dr/15.jpg",
+                "/images/dr/16.jpg",
+                "/images/dr/17.jpg",
+                "/images/dr/18.jpg",
+                "/images/dr/19.jpg",
+                "/images/dr/20.jpg",
+                "/images/dr/21.jpg",
+                "/images/dr/22.jpg",
+                "/images/dr/23.jpg",
+                "/images/dr/25.jpg",
+                "/images/dr/26.jpg",
+                "/images/dr/27.jpg",
+                "/images/dr/28.jpg",
+                "/images/dr/29.jpg",
+                "/images/dr/30.jpg",
+                "/images/dr/31.jpg",
+                "/images/dr/32.jpg",
             ],
-            testimonial: "Incredibly patient and talented with our newborn. Photos are priceless!"
+            testimonial: "Our Coimbatore wedding was documented so perfectly! Mayilu captured both the grand celebrations and intimate moments beautifully."
         }
     ];
 

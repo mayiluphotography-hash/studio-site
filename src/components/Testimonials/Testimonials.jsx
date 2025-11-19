@@ -13,7 +13,7 @@ const Testimonials = () => {
             id: 1,
             name: "Priya & Raj",
             event: "Wedding Photography",
-            text: "Mayilu captured our wedding day with such emotion and beauty. Every photo tells a story of our special day. Absolutely magical!",
+            text: "Mayilu captured our wedding's true emotions - every photo tells our love story perfectly!",
             rating: 5,
             image: "/images/testimonials/1.jpg",
             coupleNames: "Priya & Raj"
@@ -22,7 +22,7 @@ const Testimonials = () => {
             id: 2,
             name: "Arun Family",
             event: "Family Portrait",
-            text: "The patience and creativity shown during our family shoot was incredible. Our photos are now the centerpiece of our home!",
+            text: "Our family's real personality shines through in every photo - natural, joyful, and priceless memories!",
             rating: 5,
             image: "/images/testimonials/2.jpg",
             coupleNames: "Arun Family"
@@ -31,7 +31,7 @@ const Testimonials = () => {
             id: 3,
             name: "Sneha & Aditya",
             event: "Maternity Shoot",
-            text: "Such a beautiful experience! Made me feel comfortable and the photos captured this precious time perfectly. Pure artistry!",
+            text: "Made us feel so comfortable and captured this precious time with beautiful, emotional artistry!",
             rating: 5,
             image: "/images/testimonials/3.jpg",
             coupleNames: "Sneha & Aditya"
@@ -40,10 +40,28 @@ const Testimonials = () => {
             id: 4,
             name: "Karthik & Meera",
             event: "Commercial Shoot",
-            text: "Professional, creative, and delivered beyond expectations. The attention to detail in every shot is remarkable.",
+            text: "Professional photos that feel authentic - perfectly captured our brand's energy and passion!",
             rating: 5,
             image: "/images/testimonials/4.jpg",
             coupleNames: "Karthik & Meera"
+        },
+        {
+            id: 5,
+            name: "Divya & Sanjay",
+            event: "Anniversary Shoot",
+            text: "Turned our simple evening walk into magical photos that look like romantic movie stills!",
+            rating: 5,
+            image: "/images/testimonials/5.jpg",
+            coupleNames: "Divya & Sanjay"
+        },
+        {
+            id: 6,
+            name: "Rohit & Anjali",
+            event: "Engagement Shoot",
+            text: "Felt like hanging out with a friend - captured our real relationship with all its beautiful moments!",
+            rating: 5,
+            image: "/images/testimonials/6.jpg",
+            coupleNames: "Rohit & Anjali"
         }
     ];
 
@@ -66,7 +84,7 @@ const Testimonials = () => {
     useEffect(() => {
         const startAutoSlide = () => {
             if (isPaused) return;
-            
+
             timerRef.current = setInterval(() => {
                 nextTestimonial();
             }, 5000);
@@ -103,7 +121,7 @@ const Testimonials = () => {
                     <p className="testimonials-section-subtitle">Moments that speak louder than words</p>
                 </div>
 
-                <div 
+                <div
                     className="testimonials-slider-container"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}

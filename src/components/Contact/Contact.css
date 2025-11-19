@@ -294,6 +294,8 @@
   background: rgba(40, 40, 40, 0.8);
   color: #ffffff;
   font-family: 'Montserrat Alternates', sans-serif;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .form-group input::placeholder,
@@ -401,47 +403,42 @@
   font-size: 0.9rem;
 }
 
-/* Responsive Design */
-@media (min-width: 768px) {
+/* ========== RESPONSIVE FIXES ========== */
+
+/* Large Tablets (769px - 1024px) - Fix for 945px issue */
+@media (min-width: 769px) and (max-width: 1024px) {
   .container {
     padding: 0 2rem;
   }
 
-  .form-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-  }
-
-  .contact-header {
-    padding: 0;
-  }
-
-  .info-card h3,
-  .info-description {
-    text-align: left;
-  }
-
-  .contact-social h4 {
-    text-align: left;
-  }
-
-  .contact-social .social-links {
-    justify-content: flex-start;
-  }
-}
-
-@media (min-width: 1024px) {
   .contact-content {
-    grid-template-columns: 1fr 1.2fr;
-    gap: 4rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .info-card,
+  .contact-form-container {
+    padding: 1.5rem;
   }
 
   .phone-item {
-    flex-direction: row;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .phone-item a {
+    align-self: flex-start;
   }
 }
 
-@media (max-width: 767px) {
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
   .contact-section {
     padding: 4rem 0;
   }
@@ -455,15 +452,37 @@
     position: static;
   }
 
-  .contact-method {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Center contact info for mobile */
+  .info-card h3,
+  .info-description {
+    text-align: center;
+  }
+
+  /* .contact-method {
     width: 100%;
     flex-direction: column;
     text-align: center;
     gap: 1rem;
+  } */
+
+  .contact-method {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   .method-icon {
     align-self: center;
+  }
+
+  .method-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .method-details h4,
@@ -487,9 +506,6 @@
     align-self: center;
   }
 
-  /* Center everything for mobile */
-  .info-card h3,
-  .info-description,
   .contact-social h4 {
     text-align: center;
   }
@@ -497,14 +513,20 @@
   .contact-social .social-links {
     justify-content: center;
   }
+}
 
-  .method-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* Small Tablets (600px - 768px) */
+@media (min-width: 600px) and (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .form-group.full-width {
+    grid-column: 1 / -1;
   }
 }
 
+/* Mobile (480px and below) */
 @media (max-width: 480px) {
   .contact-section {
     padding: 3rem 0;
@@ -522,9 +544,13 @@
   .contact-methods {
     gap: 1.5rem;
   }
+
+  .form-grid {
+    gap: 1rem;
+  }
 }
 
-/* Extra small devices */
+/* Extra small devices (360px and below) */
 @media (max-width: 360px) {
   .contact-header h2 {
     font-size: 2rem;
@@ -542,5 +568,37 @@
   .method-icon {
     width: 35px;
     height: 35px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.7rem;
+  }
+}
+
+/* Desktop (1025px and above) */
+@media (min-width: 1025px) {
+  .contact-content {
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .info-card h3,
+  .info-description {
+    text-align: left;
+  }
+
+  .contact-social h4 {
+    text-align: left;
+  }
+
+  .contact-social .social-links {
+    justify-content: flex-start;
   }
 }

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './ClientGalleryFeed.css';
+import { useScrollToTop } from '../hooks/useScrollToTop';
 
 const ClientGalleryFeed = ({ client, onClose, onImageClick }) => {
+    useScrollToTop();
     const [loadedImages, setLoadedImages] = useState([]);
     const [imageLoadStatus, setImageLoadStatus] = useState({});
 

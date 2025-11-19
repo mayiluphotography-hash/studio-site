@@ -175,7 +175,7 @@
 
 /* Indicate when auto-rotation is paused */
 .features-section:not(.auto-rotating) .feature-card:hover::after {
-  content: '⏸️ Auto-rotation paused';
+  /* content: '⏸️ Auto-rotation paused'; */
   position: absolute;
   top: 10px;
   right: 10px;
