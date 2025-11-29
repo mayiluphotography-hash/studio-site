@@ -15,7 +15,7 @@ const Testimonials = () => {
             event: "Wedding Photography",
             text: "Mayilu captured our wedding's true emotions - every photo tells our love story perfectly!",
             rating: 5,
-            image: "/images/testimonials/1.JPG",
+            image: "/images/testimonials/1.jpeg",
             coupleNames: "Priya & Raj"
         },
         {
@@ -24,7 +24,7 @@ const Testimonials = () => {
             event: "Family Portrait",
             text: "Our family's real personality shines through in every photo - natural, joyful, and priceless memories!",
             rating: 5,
-            image: "/images/testimonials/2.JPG",
+            image: "/images/testimonials/2.jpeg",
             coupleNames: "Arun Family"
         },
         {
@@ -51,7 +51,7 @@ const Testimonials = () => {
             event: "Anniversary Shoot",
             text: "Turned our simple evening walk into magical photos that look like romantic movie stills!",
             rating: 5,
-            image: "/images/testimonials/5.JPG",
+            image: "/images/testimonials/5.jpeg",
             coupleNames: "Divya & Sanjay"
         },
         {

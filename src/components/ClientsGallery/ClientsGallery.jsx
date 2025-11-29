@@ -158,6 +158,42 @@ const ClientsGallery = () => {
                 "/images/dr/32.jpg",
             ],
             testimonial: "Our Coimbatore wedding was documented so perfectly! Mayilu captured both the grand celebrations and intimate moments beautifully."
+        },
+        {
+            id: 7,
+            name: "Jeedhan & Harini",
+            category: "Outdoor",
+            location: "Gobichettipalayam",
+            date: "2025",
+            coverImage: "/images/outdoor/13.jpg",
+            images: [
+                "/images/outdoor/1.jpg",
+                "/images/outdoor/2.jpg",
+                "/images/outdoor/3.jpg",
+                "/images/outdoor/4.jpg",
+                "/images/outdoor/5.jpg",
+                "/images/outdoor/6.jpg",
+                "/images/outdoor/7.jpg",
+                "/images/outdoor/8.jpg",
+                "/images/outdoor/9.jpg",
+                "/images/outdoor/10.jpg",
+                "/images/outdoor/11.jpg",
+                "/images/outdoor/12.jpg",
+                "/images/outdoor/13.jpg",
+                "/images/outdoor/14.jpg",
+                "/images/outdoor/15.jpg",
+                "/images/outdoor/16.jpg",
+                "/images/outdoor/17.jpg",
+                "/images/outdoor/18.jpg",
+                "/images/outdoor/19.jpg",
+                "/images/outdoor/20.jpg",
+                "/images/outdoor/21.jpg",
+                "/images/outdoor/22.jpg",
+                "/images/outdoor/23.jpg",
+                "/images/outdoor/25.jpg",
+                "/images/outdoor/26.jpg",
+            ],
+            testimonial: "Gobichetpalayam dreams come true! ✨ Mayilu captured the magic of our outdoor wedding, from the grand festivities to the most intimate moments, all with the beautiful rustic backdrop we love."
         }
     ];
 
