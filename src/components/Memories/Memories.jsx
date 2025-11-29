@@ -16,7 +16,7 @@ const Memories = () => {
       title: "Whispers of Forever",
       subtitle: "Timeless Love Stories",
       image:
-        "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=2070&q=80",
+        "/images/home-img/1.JPG",
       description:
         "Where moments become memories and love stories are written in light. Each frame captures the unspoken promises, the stolen glances, and the beautiful chaos of your special day.",
       highlights: ["Emotional Storytelling", "Candid Moments", "Artistic Composition", "Timeless Elegance"],
@@ -28,7 +28,7 @@ const Memories = () => {
       title: "Echoes of Joy",
       subtitle: "Celebrations & Milestones",
       image:
-        "https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=2070&q=80",
+        "/images/home-img/2.JPG",
       description:
         "Life's most precious celebrations frozen in time. From the first cry to golden anniversaries, we preserve the laughter, tears, and joy that make your journey unforgettable.",
       highlights: ["Authentic Emotions", "Dynamic Coverage", "Creative Storytelling", "Family Legacy"],
@@ -40,7 +40,7 @@ const Memories = () => {
       title: "Dreams Unveiled",
       subtitle: "Creative Portraits",
       image:
-        "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=2187&q=80",
+        "/images/home-img/3.JPG",
       description:
         "Unleashing the artistry within every soul. Transformative portrait sessions that reveal the unique beauty and personality shining through each individual story.",
       highlights: ["Artistic Vision", "Personalized Concepts", "Professional Lighting", "Magical Results"],

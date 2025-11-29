@@ -151,11 +151,11 @@ const Contact = () => {
                                         <h4>Phone Numbers</h4>
                                         <div className="phone-numbers">
                                             <div className="phone-item">
-                                                <span>Primary: +91 88706 45930</span>
+                                                <span>+91 88706 45930</span>
                                                 <a href="tel:+918870645930">Call</a>
                                             </div>
                                             <div className="phone-item">
-                                                <span>Secondary: +91 97154 02757</span>
+                                                <span>+91 97154 02757</span>
                                                 <a href="tel:+919715402757">Call</a>
                                             </div>
                                         </div>
